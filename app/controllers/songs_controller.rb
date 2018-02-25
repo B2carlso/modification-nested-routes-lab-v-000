@@ -25,11 +25,11 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    @song = Song.new(artist_id: params[:artist_id])
   end
 
   def create
-    @song = Song.new(artist_id: params[:artist_id])
+    @song = Song.new(song_params)
 
     if @song.save
       redirect_to @song
